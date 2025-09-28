@@ -41,15 +41,15 @@ export default function ContactPage() {
   }, [])
 
   // Nouveaux liens de navigation avec les redirections demandées
-  const navItems = [
-    { name: 'Neural Entrance', id: 'home', path: '/' },
-    { name: 'Data Mind', id: 'about', path: '/DataMind' },
-    { name: 'Project Gallery', id: 'projects', path: '/Projects' },
-    { name: 'Professional Experience', id: 'stages', path: '/stages' },
-    { name: 'Neural Skills', id: 'skills', path: '/competences' },
-    { name: 'Future Predictions', id: 'skills', path: '/predictions' },
-    { name: 'Contact', id: 'contact', path: '/contact' }
-  ]
+const navItems = [
+  { name: 'Neural Entrance', id: 'home', path: '/' },
+  { name: 'Data Mind', id: 'about', path: '/DataMind' },
+  { name: 'Project Gallery', id: 'projects', path: '/Projects' },
+  { name: 'Professional Experience', id: 'stages', path: '/stages' },
+  { name: 'Neural Skills', id: 'skills', path: '/competences' },
+  { name: 'Future Predictions', id: 'predictions', path: '/predictions' }, // Changé de 'skills' à 'predictions'
+  { name: 'Contact', id: 'contact', path: '/contact' }
+]
 
   // Gestion des changements dans le formulaire
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

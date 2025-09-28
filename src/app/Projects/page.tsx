@@ -244,15 +244,15 @@ export default function ProjectsPage() {
     // Optional: do something with the container
   }, [])
 
-  const navItems = [
-    { name: 'Neural Entrance', id: 'home', path: '/' },
-    { name: 'Data Mind', id: 'about', path: '/DataMind' },
-    { name: 'Project Gallery', id: 'projects', path: '/Projects' },
-    { name: 'Professional Experience', id: 'stages', path: '/stages' },
-    { name: 'Neural Skills', id: 'skills', path: '/competences' },
-    { name: 'Future Predictions', id: 'skills', path: '/predictions' },
-    { name: 'Contact', id: 'contact', path: '/contact' }
-  ]
+const navItems = [
+  { name: 'Neural Entrance', id: 'home', path: '/' },
+  { name: 'Data Mind', id: 'about', path: '/DataMind' },
+  { name: 'Project Gallery', id: 'projects', path: '/Projects' },
+  { name: 'Professional Experience', id: 'stages', path: '/stages' },
+  { name: 'Neural Skills', id: 'skills', path: '/competences' },
+  { name: 'Future Predictions', id: 'predictions', path: '/predictions' }, // Changé de 'skills' à 'predictions'
+  { name: 'Contact', id: 'contact', path: '/contact' }
+]
 
   const filters = [
     { id: 'all', label: 'Tous' },

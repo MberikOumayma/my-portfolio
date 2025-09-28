@@ -29,7 +29,7 @@ export default function DataMind() {
 
   // Animation de texte mystérieux
   useEffect(() => {
-    const mysteriousText = "Compiling Oumayma’s Intelligent Portfolio..."
+    const mysteriousText = "Compiling Oumayma's Intelligent Portfolio..."
     let index = 0
     const interval = setInterval(() => {
       setDisplayedText(mysteriousText.slice(0, index + 1))
@@ -70,14 +70,14 @@ export default function DataMind() {
     { name: 'Allemand', level: 30, proficiency: 'Niveau débutant', color: 'from-gray-400 to-gray-600' }
   ]
 
-  // Nouveaux liens de navigation avec les redirections demandées
+  // Liens de navigation avec IDs uniques
   const navItems = [
     { name: 'Neural Entrance', id: 'home', path: '/' },
     { name: 'Data Mind', id: 'about', path: '/DataMind' },
     { name: 'Project Gallery', id: 'projects', path: '/Projects' },
     { name: 'Professional Experience', id: 'stages', path: '/stages' },
     { name: 'Neural Skills', id: 'skills', path: '/competences' },
-    { name: 'Future Predictions', id: 'skills', path: '/predictions' },
+    { name: 'Future Predictions', id: 'predictions', path: '/predictions' },
     { name: 'Contact', id: 'contact', path: '/contact' }
   ]
 
