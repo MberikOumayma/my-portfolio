@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
 import type { Engine } from 'tsparticles-engine'
-import type { Container } from 'tsparticles-engine'
 
 interface Stage {
   id: string;
@@ -27,6 +26,7 @@ interface Stage {
   outils?: string[];
   tags?: string[];
   imageRatio?: 'wide' | 'square';
+  details?: string[];
 }
 
 export default function ProfessionalExperiencePage() {
@@ -34,11 +34,9 @@ export default function ProfessionalExperiencePage() {
   const [activeNav, setActiveNav] = useState('experience')
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
   const [activeFilter, setActiveFilter] = useState('all')
-  const [hoveredStage, setHoveredStage] = useState<string | null>(null)
   const [playingVideo, setPlayingVideo] = useState<string | null>(null)
   const [isHoveringClickable, setIsHoveringClickable] = useState(false)
   const [isCursorVisible, setIsCursorVisible] = useState(true)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({})
   const cursorRef = useRef<HTMLDivElement>(null)
 
@@ -155,7 +153,7 @@ export default function ProfessionalExperiencePage() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {}, [])
+  const particlesLoaded = useCallback(async () => {}, [])
 
   const navItems = [
     { name: 'Neural Entrance', id: 'home', path: '/' },
@@ -180,9 +178,9 @@ export default function ProfessionalExperiencePage() {
       entreprise: 'BaridVision',
       poste: 'Stagiaire Data Scientist – IA',
       periode: 'Juin 2025 – Septembre 2025',
-      lieu: 'Tunisie',
+      lieu: 'BaridVision, Tunisie',
       description: 'Système de vision par ordinateur pour centres de tri postaux',
-      technologies: ['YOLOv8', 'ByteTrack', 'ConvNeXtV2-Large', 'Deep Learning', 'Computer Vision'],
+      technologies: ['YOLOv8', 'ByteTrack', 'ConvNeXtV2-Large', 'Deep Learning', 'Computer Vision', 'Roboflow', 'Python'],
       missions: ['Développement pipeline IA', 'Annotation données', 'Intégration industrielle'],
       achievements: ['Précision >95%', 'Calcul poids volumétrique'],
       competences: ['Computer Vision', 'Deep Learning', 'Traitement temps réel'],
@@ -193,45 +191,67 @@ export default function ProfessionalExperiencePage() {
       couleur: 'from-blue-600/20 to-cyan-600/20',
       icone: '👁️',
       niveau: 'expert',
-      imageRatio: 'wide'
+      imageRatio: 'wide',
+      details: [
+        'Annotation et préparation du dataset avec Roboflow, incluant nettoyage, labellisation et gestion des classes pour entraîner les modèles de détection.',
+        'Développement d&apos;un pipeline IA complet pour la détection et le suivi en temps réel des colis avec YOLOv8 et ByteTrack, atteignant une précision élevée (>95%) sur données réelles.',
+        'Entraînement d&apos;un modèle ConvNeXtV2-Large pour l&apos;estimation précise des dimensions des colis, permettant le calcul automatique du poids volumétrique pour la facturation logistique.',
+        'Mise en œuvre d&apos;un modèle de Deep Learning pour l&apos;identification d&apos;objets interdits (armes, liquides, batteries, etc.) à partir de données visuelles issues de caméras rayons-X.',
+        'Développement d&apos;un système de classification des colis (intacts/endommagés, petits/grands), contribuant à l&apos;amélioration de la sécurité et fiabilité du tri postal.',
+        'Contribution à l&apos;intégration des solutions IA dans l&apos;environnement industriel, avec caméras RGB et X-Ray, en respectant les contraintes de sécurité et performance temps réel.'
+      ]
     },
     {
       id: 'stage2',
       entreprise: 'Solartech-Sud',
       poste: 'Stagiaire Développeuse Backend',
       periode: 'Juin 2024 – Juillet 2024',
-      lieu: 'Tunisie',
+      lieu: 'Solartech-Sud, Tunisie',
       description: 'Solutions logicielles pour systèmes solaires intelligents',
-      technologies: ['Python', 'Flask', 'REST API', 'SQLAlchemy', 'PostgreSQL'],
+      technologies: ['Python', 'Flask', 'REST API', 'SQLAlchemy', 'PostgreSQL', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'IoT'],
       missions: ['Développement backend', 'Dashboard interactif', 'API REST'],
       achievements: ['Dashboard temps réel', 'Système SMS IoT'],
       competences: ['Développement Backend', 'API REST', 'IoT'],
-      outils: ['Flask', 'PostgreSQL', 'Docker'],
+      outils: ['Flask', 'PostgreSQL', 'Docker', 'Git/GitHub', 'Postman'],
       tags: ['Backend', 'IoT', 'Énergie Solaire'],
       image: '/solartechlogo.png',
       couleur: 'from-green-600/20 to-emerald-600/20',
       icone: '⚡',
       niveau: 'avance',
-      imageRatio: 'wide'
+      imageRatio: 'wide',
+      details: [
+        'Développement de fonctionnalités backend avec Flask (Python), incluant un système robuste de gestion des utilisateurs et d&apos;authentification sécurisée.',
+        'Conception et déploiement d&apos;un dashboard interactif pour le suivi des données et la supervision des équipements.',
+        'Implémentation d&apos;un service de communication automatisée par SMS entre machines (IoT) pour assurer la connectivité temps réel.',
+        'Renforcement des compétences en développement backend, API REST, et gestion d&apos;interfaces utilisateurs.',
+        '🔹 Technologies & Outils : Python, Flask, REST API, SQLAlchemy, PostgreSQL/MySQL, HTML5, CSS3, JavaScript, Bootstrap, IoT (SMS Gateway), Git/GitHub, Docker (initiation), Postman.'
+      ]
     },
     {
       id: 'stage3',
       entreprise: 'Softifi',
       poste: 'Stagiaire Développeuse Mobile',
       periode: 'Juin 2022 – Juillet 2022',
-      lieu: 'Tunisie',
-      description: 'Développement d\'applications mobiles multiplateformes',
-      technologies: ['Flutter', 'Dart', 'Android', 'iOS', 'REST API'],
+      lieu: 'Softifi, Tunisie',
+      description: 'Développement d&apos;applications mobiles multiplateformes',
+      technologies: ['Flutter', 'Dart', 'Android', 'iOS', 'REST API', 'Firebase', 'JSON'],
       missions: ['Apps multiplateformes', 'UI/UX moderne', 'Optimisation performances'],
       achievements: ['Apps Android/iOS', 'Interfaces responsives'],
       competences: ['Développement Mobile', 'UI/UX', 'Cross-platform'],
-      outils: ['Flutter', 'Dart', 'Android Studio'],
+      outils: ['Flutter', 'Dart', 'Android Studio', 'Xcode', 'Visual Studio Code'],
       tags: ['Mobile', 'Cross-platform', 'UI/UX'],
       image: '/softifilogo.jpeg',
       couleur: 'from-purple-600/20 to-pink-600/20',
       icone: '📱',
       niveau: 'intermediaire',
-      imageRatio: 'square'
+      imageRatio: 'square',
+      details: [
+        'Conception et développement d&apos;applications mobiles pour Android et iOS avec Flutter, intégrant des APIs RESTful pour des services avancés.',
+        'Réalisation d&apos;interfaces modernes et ergonomiques, améliorant l&apos;expérience utilisateur.',
+        'Optimisation des performances des applications grâce à des techniques de profiling et de débogage sur Visual Studio Code.',
+        'Contribution au cycle complet de développement mobile : design → développement → tests → déploiement.',
+        '🔹 Technologies & Outils : Flutter, Dart, Android Studio, Xcode, APIs RESTful, Firebase (Auth/DB/Cloud Messaging), JSON, Git/GitHub, Visual Studio Code, Material Design, Postman.'
+      ]
     }
   ]
 
@@ -536,7 +556,7 @@ export default function ProfessionalExperiencePage() {
           </motion.h1>
           
           <motion.p className="text-cyan-300 font-mono text-xl md:text-2xl max-w-4xl mx-auto mb-8">
-            Parcours d'évolution technologique
+            Parcours d&apos;évolution technologique
           </motion.p>
         </motion.div>
 
@@ -602,7 +622,7 @@ export default function ProfessionalExperiencePage() {
                     </div>
 
                     <div className="mb-6 p-4 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 rounded-xl border border-cyan-500/20">
-                      <p className="text-cyan-100/80 leading-relaxed">{stage.description}</p>
+                      <p className="text-cyan-100/80 leading-relaxed">📌 {stage.description}</p>
                     </div>
 
                     {/* Media avec gestion vidéo améliorée */}
@@ -615,7 +635,7 @@ export default function ProfessionalExperiencePage() {
                     </div>
 
                     <div className="flex flex-wrap gap-3 mb-6">
-                      {stage.technologies.slice(0, 4).map((tech, techIndex) => (
+                      {stage.technologies.slice(0, 6).map((tech, techIndex) => (
                         <TechBadge key={tech} tech={tech} index={techIndex} />
                       ))}
                     </div>
@@ -640,12 +660,12 @@ export default function ProfessionalExperiencePage() {
                             <div>
                               <h4 className="text-xl font-semibold text-cyan-400 mb-4">Missions détaillées</h4>
                               <div className="grid gap-3">
-                                {stage.missions.map((mission, missionIndex) => (
-                                  <div key={missionIndex} className="flex items-start p-3 bg-gradient-to-r from-cyan-900/10 to-purple-900/10 rounded-xl">
+                                {stage.details?.map((detail, detailIndex) => (
+                                  <div key={detailIndex} className="flex items-start p-3 bg-gradient-to-r from-cyan-900/10 to-purple-900/10 rounded-xl">
                                     <div className="w-6 h-6 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center mr-3 flex-shrink-0 mt-1 text-xs">
-                                      {missionIndex + 1}
+                                      {detailIndex + 1}
                                     </div>
-                                    <p className="text-cyan-100/80">{mission}</p>
+                                    <p className="text-cyan-100/80 leading-relaxed">{detail}</p>
                                   </div>
                                 ))}
                               </div>

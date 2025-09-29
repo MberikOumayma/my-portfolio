@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,17 +11,15 @@ import type { Container } from 'tsparticles-engine'
 
 export default function DataMind() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
   const [activeNav, setActiveNav] = useState('')
   const [displayedText, setDisplayedText] = useState('')
   const [showContent, setShowContent] = useState(false)
 
   // Fonction pour télécharger le CV
   const handleDownloadCV = () => {
-    // Créer un lien temporaire
     const link = document.createElement('a');
-    link.href = '/cv.pdf'; // Chemin vers votre fichier CV dans le dossier public
-    link.download = 'Mberik_Oumayma_CV.pdf'; // Nom du fichier téléchargé
+    link.href = '/cv.pdf';
+    link.download = 'Mberik_Oumayma_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -29,7 +27,7 @@ export default function DataMind() {
 
   // Animation de texte mystérieux
   useEffect(() => {
-    const mysteriousText = "Compiling Oumayma's Intelligent Portfolio..."
+    const mysteriousText = "Compiling Oumayma&apos;s Intelligent Portfolio..."
     let index = 0
     const interval = setInterval(() => {
       setDisplayedText(mysteriousText.slice(0, index + 1))
@@ -58,7 +56,7 @@ export default function DataMind() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
+  const particlesLoaded = useCallback(async () => {
     // Optional: do something with the container
   }, [])
 
@@ -250,33 +248,28 @@ export default function DataMind() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 + index * 0.1 }}
                     >
-                      <motion.div
-                        onHoverStart={() => setIsHovering(true)}
-                        onHoverEnd={() => setIsHovering(false)}
+                      <Link
+                        href={item.path}
+                        className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${
+                          activeNav === item.id ? 'text-cyan-400' : ''
+                        }`}
+                        onClick={() => setActiveNav(item.id)}
                       >
-                        <Link
-                          href={item.path}
-                          className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${
-                            activeNav === item.id ? 'text-cyan-400' : ''
-                          }`}
-                          onClick={() => setActiveNav(item.id)}
-                        >
-                          {item.name}
-                          {activeNav === item.id && (
-                            <motion.div 
-                              className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                              layoutId="navIndicator"
-                            />
-                          )}
-                          {/* Souligner "Data Mind" */}
-                          {item.name === 'Data Mind' && (
-                            <motion.div 
-                              className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                              layoutId="dataMindIndicator"
-                            />
-                          )}
-                        </Link>
-                      </motion.div>
+                        {item.name}
+                        {activeNav === item.id && (
+                          <motion.div 
+                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
+                            layoutId="navIndicator"
+                          />
+                        )}
+                        {/* Souligner "Data Mind" */}
+                        {item.name === 'Data Mind' && (
+                          <motion.div 
+                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
+                            layoutId="dataMindIndicator"
+                          />
+                        )}
+                      </Link>
                     </motion.div>
                   ))}
                 </div>
@@ -299,8 +292,6 @@ export default function DataMind() {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative group"
-                  onHoverStart={() => setIsHovering(true)}
-                  onHoverEnd={() => setIsHovering(false)}
                 >
                   <div className="relative w-64 h-64 mx-auto">
                     {/* Effet hologramme pulsant */}
@@ -385,8 +376,6 @@ export default function DataMind() {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6 + index * 0.1 }}
-                        onHoverStart={() => setIsHovering(true)}
-                        onHoverEnd={() => setIsHovering(false)}
                       >
                         <span className="text-cyan-400 mr-3 mt-0.5 text-lg">{item.icon}</span>
                         <span className="text-cyan-100/90">{item.text}</span>
@@ -399,8 +388,6 @@ export default function DataMind() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.9 }}
-                      onHoverStart={() => setIsHovering(true)}
-                      onHoverEnd={() => setIsHovering(false)}
                     >
                       <a 
                         href="https://www.linkedin.com/in/oumaymamberik" 
@@ -443,8 +430,6 @@ export default function DataMind() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 + index * 0.2 }}
-                        onHoverStart={() => setIsHovering(true)}
-                        onHoverEnd={() => setIsHovering(false)}
                       >
                         <div className="flex justify-between items-center mb-3">
                           <span className="text-cyan-300 font-mono text-sm tracking-wide">{language.name}</span>
@@ -492,11 +477,11 @@ export default function DataMind() {
                   >
                     Future Data Scientist & AI Engineer
                   </motion.p>
-                  {/* Barre plus longue - s'arrête au niveau du E de Engineer */}
+                  {/* Barre plus longue - s&apos;arrête au niveau du E de Engineer */}
                   <motion.div 
                     className="h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto lg:mx-0 rounded-full"
                     initial={{ width: 0 }}
-                    animate={{ width: '340px' }} // Longueur ajustée pour s'arrêter au E de Engineer
+                    animate={{ width: '340px' }} // Longueur ajustée pour s&apos;arrêter au E de Engineer
                     transition={{ delay: 1.4, duration: 0.8 }}
                   />
                 </motion.div>
@@ -507,8 +492,6 @@ export default function DataMind() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.4 }}
-                  onHoverStart={() => setIsHovering(true)}
-                  onHoverEnd={() => setIsHovering(false)}
                 >
                   {/* Effet de code défilant en arrière-plan */}
                   <div className="absolute inset-0 overflow-hidden opacity-10">
@@ -532,7 +515,7 @@ export default function DataMind() {
                           delay: Math.random() * 5,
                         }}
                       >
-                        {`${Math.random().toString(36).substring(2)} ${Math.random() > 0.5 ? '=' : '=>'} ${Math.random().toString(36).substring(2)}`}
+                        {`${Math.random().toString(36).substring(2)} ${Math.random() > 0.5 ? '=' : '=&gt;'} ${Math.random().toString(36).substring(2)}`}
                       </motion.div>
                     ))}
                   </div>
@@ -547,8 +530,8 @@ export default function DataMind() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.6 }}
                     >
-                      Étudiante en dernière année d'ingénierie informatique à l'ESPRIT de Tunisie, spécialisée en Science des Données, 
-                      j'ai développé une solide expertise en IA, analyse, modélisation prédictive, et visualisation de données.
+                      Étudiante en dernière année d&apos;ingénierie informatique à l&apos;ESPRIT de Tunisie, spécialisée en Science des Données, 
+                      j&apos;ai développé une solide expertise en IA, analyse, modélisation prédictive, et visualisation de données.
                     </motion.p>
                     <motion.p
                       initial={{ opacity: 0 }}
@@ -556,7 +539,7 @@ export default function DataMind() {
                       transition={{ delay: 1.8 }}
                     >
                       Grâce à une formation rigoureuse et à des projets pratiques réalisés avec Python, Scikit-learn, TensorFlow, 
-                      Power BI, MySQL, Flask et Docker, j'ai conçu et mis en œuvre des modèles de machine learning et deep learning 
+                      Power BI, MySQL, Flask et Docker, j&apos;ai conçu et mis en œuvre des modèles de machine learning et deep learning 
                       appliqués à des cas réels.
                     </motion.p>
                     <motion.p
@@ -564,9 +547,9 @@ export default function DataMind() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 2.0 }}
                     >
-                      Responsable, motivée et dotée d'un bon sens de la communication, je suis à la recherche d'un stage de fin 
-                      d'études de six mois à partir de janvier 2026, afin de mettre mes compétences dans les domaines des données 
-                      et de l'IA au service de projets technologiques innovants à impact concret.
+                      Responsable, motivée et dotée d&apos;un bon sens de la communication, je suis à la recherche d&apos;un stage de fin 
+                      d&apos;études de six mois à partir de janvier 2026, afin de mettre mes compétences dans les domaines des données 
+                      et de l&apos;IA au service de projets technologiques innovants à impact concret.
                     </motion.p>
                   </div>
 
@@ -617,7 +600,7 @@ export default function DataMind() {
                     {[
                       { 
                         title: "Étudiante en 5e année – Ingénierie Informatique – Science des données", 
-                        institution: "École Supérieure Privée d'Ingénierie et de Technologies (ESPRIT)",
+                        institution: "École Supérieure Privée d&apos;Ingénierie et de Technologies (ESPRIT)",
                         period: "2021 - Présent",
                         color: "from-cyan-500 to-cyan-600"
                       },
@@ -658,8 +641,6 @@ export default function DataMind() {
                       className="px-10 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-full font-bold text-white hover:shadow-2xl hover:shadow-cyan-500/30 transition-all duration-500 group relative overflow-hidden"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      onHoverStart={() => setIsHovering(true)}
-                      onHoverEnd={() => setIsHovering(false)}
                       onClick={handleDownloadCV}
                     >
                       <span className="relative z-10">Télécharger mon CV</span>

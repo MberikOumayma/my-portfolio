@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
 import type { Engine } from 'tsparticles-engine'
-import type { Container } from 'tsparticles-engine'
 
 // Définir les types TypeScript
 interface SkillCategory {
@@ -21,15 +20,6 @@ interface Skill {
   name: string
   level: number // 1-100
   description?: string
-}
-
-interface SkillParticle {
-  x: number
-  y: number
-  size: number
-  speedX: number
-  speedY: number
-  color: string
 }
 
 interface NeuralNode {
@@ -47,13 +37,11 @@ interface NeuralNode {
 
 export default function SkillsPage() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
   const [activeNav, setActiveNav] = useState('skills')
   const [activeTab, setActiveTab] = useState<'list' | 'network'>('list')
   const [activeCategory, setActiveCategory] = useState<string>('all')
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
 
   // Curseur personnalisé amélioré
   useEffect(() => {
@@ -69,7 +57,7 @@ export default function SkillsPage() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
+  const particlesLoaded = useCallback(async () => {
     // Optional: do something with the container
   }, [])
 
@@ -93,7 +81,7 @@ export default function SkillsPage() {
         { name: 'Python', level: 95, description: 'Développement de scripts, analyses de données, ML, automation' },
         { name: 'R', level: 85, description: 'Analyses statistiques, visualisations, rapports automatisés' },
         { name: 'SQL', level: 90, description: 'Requêtes complexes, optimisation, modélisation de données' },
-        { name: 'Java', level: 80, description: 'Développement d\'applications backend, Spring Boot' },
+        { name: 'Java', level: 80, description: 'Développement d&apos;applications backend, Spring Boot' },
         { name: 'Scala', level: 70, description: 'Traitement de données distribué avec Spark' },
         { name: 'C++', level: 75, description: 'Algorithmes performants, calcul scientifique' },
         { name: 'TypeScript/JavaScript', level: 85, description: 'Développement frontend, visualisations interactives' }
@@ -108,7 +96,7 @@ export default function SkillsPage() {
         { name: 'Machine Learning', level: 90, description: 'Modèles prédictifs, classification, régression' },
         { name: 'Deep Learning', level: 85, description: 'Réseaux neuronaux, CNN, RNN, Transformers' },
         { name: 'LLM & GPT', level: 80, description: 'Fine-tuning, prompt engineering, applications génératives' },
-        { name: 'Computer Vision', level: 75, description: 'Traitement d\'images, détection d\'objets, segmentation' },
+        { name: 'Computer Vision', level: 75, description: 'Traitement d&apos;images, détection d&apos;objets, segmentation' },
         { name: 'NLP', level: 85, description: 'Traitement de texte, analyse de sentiment, NER' },
         { name: 'Reinforcement Learning', level: 65, description: 'Algorithmes Q-learning, applications jeux' },
         { name: 'MLOps', level: 80, description: 'Déploiement, monitoring, versioning de modèles' }
@@ -155,7 +143,7 @@ export default function SkillsPage() {
         { name: 'Jenkins', level: 70, description: 'BigQuery, Vertex AI, Cloud Functions' },
         { name: 'Docker', level: 90, description: 'Conteneurisation, images, déploiement' },
         { name: 'Kubernetes', level: 75, description: 'Orchestration de conteneurs, scaling' },
-        { name: 'MLflow', level: 80, description: 'Tracking d\'expériences, gestion de modèles' },
+        { name: 'MLflow', level: 80, description: 'Tracking d&apos;expériences, gestion de modèles' },
         { name: 'CI/CD', level: 85, description: 'GitHub Actions, Jenkins, automatisation déploiement' }
       ],
       icon: '☁️',
@@ -166,7 +154,7 @@ export default function SkillsPage() {
       title: 'Visualisation & BI',
       skills: [
         { name: 'Tableau', level: 90, description: 'Dashboards interactifs, story-telling data' },
-        { name: 'Power BI', level: 85, description: 'Reports d\'entreprise, modèles data' },
+        { name: 'Power BI', level: 85, description: 'Reports d&apos;entreprise, modèles data' },
         { name: 'Matplotlib/Seaborn', level: 95, description: 'Visualisations Python, analyses exploratoires' },
         { name: 'Plotly/Dash', level: 80, description: 'Visualisations interactives, applications web' },
         { name: 'D3.js', level: 70, description: 'Visualisations customisées avancées' },
@@ -180,112 +168,18 @@ export default function SkillsPage() {
       id: 'math-stats',
       title: 'Maths & Statistiques',
       skills: [
-        { name: 'Statistiques', level: 90, description: 'Tests d\'hypothèses, intervalles de confiance' },
+        { name: 'Statistiques', level: 90, description: 'Tests d&apos;hypothèses, intervalles de confiance' },
         { name: 'Probabilités', level: 85, description: 'Distributions, Bayes, processus stochastiques' },
         { name: 'Algèbre Linéaire', level: 80, description: 'Matrices, décompositions, optimisation' },
         { name: 'Calcul', level: 75, description: 'Dérivées, intégrales, optimisation continue' },
         { name: 'Optimisation', level: 80, description: 'Algorithmes gradient, convexité, contraintes' },
         { name: 'Recherche Opérationnelle', level: 70, description: 'Optimisation discrète, programmation linéaire' },
-        { name: 'Expérimentation', level: 85, description: 'Tests A/B, design d\'expérience, causalité' }
+        { name: 'Expérimentation', level: 85, description: 'Tests A/B, design d&apos;expérience, causalité' }
       ],
       icon: '🧮',
       color: 'from-cyan-500 to-blue-500'
     }
   ]
-
-  // Animation des particules en arrière-plan
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-    
-    // Redimensionner le canvas
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    
-    resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
-    
-    // Créer des particules avec des couleurs correspondant aux catégories
-    const particles: SkillParticle[] = []
-    const colors = [
-      'rgba(59, 130, 246, 0.6)', // blue
-      'rgba(139, 92, 246, 0.6)', // purple
-      'rgba(16, 185, 129, 0.6)', // green
-      'rgba(245, 158, 11, 0.6)', // yellow
-      'rgba(99, 102, 241, 0.6)', // indigo
-      'rgba(244, 63, 94, 0.6)',  // red
-      'rgba(8, 145, 178, 0.6)'   // cyan
-    ]
-    
-    for (let i = 0; i < 100; i++) {
-      const color = colors[Math.floor(Math.random() * colors.length)]
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 4 + 1,
-        speedX: Math.random() * 2 - 1,
-        speedY: Math.random() * 2 - 1,
-        color: color
-      })
-    }
-    
-    // Fonction d'animation
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
-      // Dessiner les particules
-      particles.forEach(particle => {
-        particle.x += particle.speedX * 0.5
-        particle.y += particle.speedY * 0.5
-        
-        // Rebond sur les bords
-        if (particle.x > canvas.width || particle.x < 0) {
-          particle.speedX = -particle.speedX
-        }
-        if (particle.y > canvas.height || particle.y < 0) {
-          particle.speedY = -particle.speedY
-        }
-        
-        // Dessiner la particule
-        ctx.fillStyle = particle.color
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fill()
-      })
-      
-      // Dessiner des lignes entre les particules proches
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)'
-      ctx.lineWidth = 0.5
-      
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          
-          if (distance < 100) {
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.stroke()
-          }
-        }
-      }
-      
-      requestAnimationFrame(animate)
-    }
-    
-    animate()
-    
-    return () => {
-      window.removeEventListener('resize', resizeCanvas)
-    }
-  }, [])
 
   // Fonction pour obtenir toutes les compétences (pour la vue "all")
   const getAllSkills = () => {
@@ -300,12 +194,6 @@ export default function SkillsPage() {
     
     const category = skillCategories.find(cat => cat.id === activeCategory)
     return category ? category.skills : []
-  }
-
-  // Fonction pour obtenir la couleur de la catégorie
-  const getCategoryColor = (categoryId: string) => {
-    const category = skillCategories.find(cat => cat.id === categoryId)
-    return category ? category.color : 'from-gray-500 to-gray-700'
   }
 
   // Obtenir la catégorie d'une compétence
@@ -391,7 +279,7 @@ export default function SkillsPage() {
         })
 
         // Créer des connexions entre les nœuds
-        nodes.forEach((node, i) => {
+        nodes.forEach((node: NeuralNode, i: number) => {
           // Connecter à quelques nœuds aléatoires (plus de connexions pour les compétences importantes)
           const numConnections = Math.floor((node.level / 30)) + 1
           for (let j = 0; j < numConnections; j++) {
@@ -418,9 +306,9 @@ export default function SkillsPage() {
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'
         ctx.lineWidth = 1
 
-        nodesRef.current.forEach(node => {
-          node.connections.forEach(connectionId => {
-            const targetNode = nodesRef.current.find(n => n.id === connectionId)
+        nodesRef.current.forEach((node: NeuralNode) => {
+          node.connections.forEach((connectionId: string) => {
+            const targetNode = nodesRef.current.find((n: NeuralNode) => n.id === connectionId)
             if (targetNode) {
               ctx.beginPath()
               ctx.moveTo(node.x, node.y)
@@ -431,7 +319,7 @@ export default function SkillsPage() {
         })
 
         // Dessiner les nœuds
-        nodesRef.current.forEach(node => {
+        nodesRef.current.forEach((node: NeuralNode) => {
           const size = 5 + (node.level / 100) * 20 // Taille basée sur le niveau
 
           // Halo
@@ -477,7 +365,7 @@ export default function SkillsPage() {
         animationIdRef.current = requestAnimationFrame(animate)
 
         // Mettre à jour les positions avec une légère animation
-        nodesRef.current.forEach(node => {
+        nodesRef.current.forEach((node: NeuralNode) => {
           // Mouvement doux
           node.x += node.vx
           node.y += node.vy
@@ -520,7 +408,7 @@ export default function SkillsPage() {
         const mouseY = e.clientY - rect.top
 
         // Vérifier si la souris est sur un nœud
-        const nodeUnderMouse = nodesRef.current.find(node => {
+        const nodeUnderMouse = nodesRef.current.find((node: NeuralNode) => {
           const size = 5 + (node.level / 100) * 20
           const dx = mouseX - node.x
           const dy = mouseY - node.y
@@ -538,7 +426,7 @@ export default function SkillsPage() {
         const mouseY = e.clientY - rect.top
 
         // Vérifier si le clic est sur un nœud
-        const clickedNode = nodesRef.current.find(node => {
+        const clickedNode = nodesRef.current.find((node: NeuralNode) => {
           const size = 5 + (node.level / 100) * 20
           const dx = mouseX - node.x
           const dy = mouseY - node.y
@@ -726,13 +614,6 @@ export default function SkillsPage() {
         }}
       />
 
-      {/* Canvas pour l'arrière-plan animé */}
-      <canvas 
-        ref={canvasRef} 
-        className="fixed inset-0 z-0 opacity-30"
-        style={{ background: 'transparent' }}
-      />
-
       {/* Barre de navigation supérieure améliorée avec design premium */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
@@ -752,33 +633,28 @@ export default function SkillsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                 >
-                  <motion.div
-                    onHoverStart={() => setIsHovering(true)}
-                    onHoverEnd={() => setIsHovering(false)}
+                  <Link
+                    href={item.path}
+                    className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${
+                      activeNav === item.id ? 'text-cyan-400' : ''
+                    }`}
+                    onClick={() => setActiveNav(item.id)}
                   >
-                    <Link
-                      href={item.path}
-                      className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${
-                        activeNav === item.id ? 'text-cyan-400' : ''
-                      }`}
-                      onClick={() => setActiveNav(item.id)}
-                    >
-                      {item.name}
-                      {activeNav === item.id && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                          layoutId="navIndicator"
-                        />
-                      )}
-                      {/* Souligner "Neural Skills" */}
-                      {item.name === 'Neural Skills' && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                          layoutId="neuralSkillsIndicator"
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
+                    {item.name}
+                    {activeNav === item.id && (
+                      <motion.div 
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
+                        layoutId="navIndicator"
+                      />
+                    )}
+                    {/* Souligner "Neural Skills" */}
+                    {item.name === 'Neural Skills' && (
+                      <motion.div 
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
+                        layoutId="neuralSkillsIndicator"
+                      />
+                    )}
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -1060,7 +936,7 @@ export default function SkillsPage() {
           transition={{ delay: 1 }}
           className="mt-16 bg-cyan-900/20 backdrop-blur-md rounded-2xl p-6 border border-cyan-500/30"
         >
-          <h2 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Niveaux d'expertise</h2>
+          <h2 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Niveaux d&apos;expertise</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">

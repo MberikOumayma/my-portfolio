@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect, useState, useRef, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
 import type { Engine } from 'tsparticles-engine'
-import type { Container } from 'tsparticles-engine'
 
 export default function NeuralEntrance() {
   const [currentQuote, setCurrentQuote] = useState(0)
@@ -46,7 +45,7 @@ export default function NeuralEntrance() {
       setCurrentQuote((prev) => (prev + 1) % quotes.length)
     }, 6000)
     return () => clearInterval(interval)
-  }, [])
+  }, [quotes.length])
 
   // Animation des statistiques (compteurs qui augmentent)
   useEffect(() => {
@@ -95,7 +94,7 @@ export default function NeuralEntrance() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
+  const particlesLoaded = useCallback(async () => {
     // Optional: do something with the container
   }, [])
 
@@ -110,7 +109,7 @@ export default function NeuralEntrance() {
           transition={{ delay: 0.5, duration: 1 }}
           className="bg-black/20 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-3 font-mono"
         >
-          <div className="text-cyan-400 text-xs mb-1">Données générées aujourd'hui</div>
+          <div className="text-cyan-400 text-xs mb-1">Données générées aujourd&apos;hui</div>
           <div className="text-cyan-300 text-sm">{dataGenerated.toFixed(0)} To</div>
         </motion.div>
       </div>
@@ -144,7 +143,6 @@ export default function NeuralEntrance() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
           className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-50 bg-cyan-900/80 backdrop-blur-md border border-cyan-400/50 rounded-lg p-4 max-w-xs"
         >
           <div className="flex items-start">
@@ -155,7 +153,7 @@ export default function NeuralEntrance() {
             </div>
             <div>
               <h3 className="text-cyan-300 text-sm font-medium mb-1">Première connexion</h3>
-              <p className="text-cyan-200 text-xs">Cliquez sur "Découvrir mon Univers" pour explorer mon portfolio de data science</p>
+              <p className="text-cyan-200 text-xs">Cliquez sur &quot;Découvrir mon Univers&quot; pour explorer mon portfolio de data science</p>
             </div>
             <button 
               onClick={() => setShowGuide(false)}
@@ -317,7 +315,7 @@ export default function NeuralEntrance() {
           transition={{ delay: 0.8, duration: 1.5 }}
           className="text-lg md:text-xl text-cyan-200/90 mb-6 italic max-w-2xl mx-auto leading-relaxed"
         >
-          "{quotes[currentQuote]}"
+          &quot;{quotes[currentQuote]}&quot;
         </motion.div>
 
         {/* Paragraphe sur l'importance de la data science et IA */}
@@ -328,15 +326,15 @@ export default function NeuralEntrance() {
           className="text-cyan-100/80 mb-10 max-w-3xl mx-auto text-base md:text-lg leading-relaxed font-light"
         >
           <p className="mb-4">
-            Aujourd'hui, la <span className="text-cyan-300 font-medium">data science</span> et l'<span className="text-purple-300 font-medium">intelligence artificielle </span> 
+            Aujourd&apos;hui, la <span className="text-cyan-300 font-medium">data science</span> et l&apos;<span className="text-purple-300 font-medium">intelligence artificielle </span> 
              révolutionnent notre monde en transformant des données brutes en insights précieux. 
-            Elles sont devenues les piliers de l'innovation moderne, permettant de résoudre des problèmes complexes, 
+            Elles sont devenues les piliers de l&apos;innovation moderne, permettant de résoudre des problèmes complexes, 
             de prédire les tendances futures et de créer des systèmes intelligents qui améliorent notre quotidien.
           </p>
           <p>
-            De la santé à la finance, en passant par l'environnement et l'éducation, ces technologies 
+            De la santé à la finance, en passant par l&apos;environnement et l&apos;éducation, ces technologies 
             transforment chaque industrie et ouvrent la voie à un avenir où les décisions sont éclairées 
-            par l'analyse prédictive et l'apprentissage automatique.
+            par l&apos;analyse prédictive et l&apos;apprentissage automatique.
           </p>
         </motion.div>
 

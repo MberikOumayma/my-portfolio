@@ -6,13 +6,9 @@ import Link from 'next/link'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
 import type { Engine } from 'tsparticles-engine'
-import type { Container } from 'tsparticles-engine'
 
 export default function FuturePredictions() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [activeNav, setActiveNav] = useState('')
-  const [timelineYear, setTimelineYear] = useState(2024)
   const [selectedSkill, setSelectedSkill] = useState('Recherche en IA')
   const [activeCategory, setActiveCategory] = useState('all')
 
@@ -30,7 +26,7 @@ export default function FuturePredictions() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
+  const particlesLoaded = useCallback(async () => {
     // Optional: do something with the container
   }, [])
 
@@ -52,7 +48,7 @@ export default function FuturePredictions() {
       role: 'Obtention du Diplôme', 
       probability: 100,
       status: 'diploma',
-      description: 'Diplôme d\'Ingénieur en Intelligence Artificielle et Science des Données'
+      description: 'Diplôme d&apos;Ingénieur en Intelligence Artificielle et Science des Données'
     },
     { 
       year: 2027, 
@@ -87,7 +83,7 @@ export default function FuturePredictions() {
       role: 'Lead AI Researcher', 
       probability: 75,
       status: 'future',
-      description: 'Direction d\'équipes de recherche, stratégie innovation IA'
+      description: 'Direction d&apos;équipes de recherche, stratégie innovation IA'
     }
   ]
 
@@ -363,33 +359,12 @@ export default function FuturePredictions() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                 >
-                  <motion.div
-                    onHoverStart={() => setIsHovering(true)}
-                    onHoverEnd={() => setIsHovering(false)}
+                  <Link
+                    href={item.path}
+                    className="text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1"
                   >
-                    <Link
-                      href={item.path}
-                      className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${
-                        activeNav === item.id ? 'text-cyan-400' : ''
-                      }`}
-                      onClick={() => setActiveNav(item.id)}
-                    >
-                      {item.name}
-                      {activeNav === item.id && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                          layoutId="navIndicator"
-                        />
-                      )}
-                      {/* Souligner "Future Predictions" */}
-                      {item.name === 'Future Predictions' && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                          layoutId="futureIndicator"
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
+                    {item.name}
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -454,7 +429,7 @@ export default function FuturePredictions() {
               <div className="mb-6 p-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg border border-green-500/30">
                 <div className="flex items-center justify-center">
                   <span className="text-green-400 mr-2">🎓</span>
-                  <span className="text-green-300 font-mono text-sm">Obtention du diplôme d'Ingénieur en 2026</span>
+                  <span className="text-green-300 font-mono text-sm">Obtention du diplôme d&apos;Ingénieur en 2026</span>
                 </div>
               </div>
               
@@ -548,7 +523,7 @@ export default function FuturePredictions() {
                 </div>
                 <div className="text-center p-3 bg-purple-500/10 rounded-lg">
                   <div className="text-purple-400 font-bold">±10%</div>
-                  <div className="text-purple-300/70">Marge d'erreur</div>
+                  <div className="text-purple-300/70">Marge d&apos;erreur</div>
                 </div>
                 <div className="text-center p-3 bg-green-500/10 rounded-lg">
                   <div className="text-green-400 font-bold">2026</div>
@@ -566,7 +541,7 @@ export default function FuturePredictions() {
             >
               <h2 className="text-2xl font-bold text-cyan-400 mb-6 flex items-center">
                 <span className="mr-3">🚀</span> 
-                Prévision d'Acquisition de Compétences
+                Prévision d&apos;Acquisition de Compétences
               </h2>
               
               {/* Filtres par catégorie */}
@@ -708,7 +683,7 @@ export default function FuturePredictions() {
           >
             <h2 className="text-2xl font-bold text-cyan-400 mb-6 flex items-center">
               <span className="mr-3">🌍</span> 
-              Estimation d'Impact
+              Estimation d&apos;Impact
             </h2>
             
             <div className="grid grid-cols-2 gap-8">
@@ -784,7 +759,7 @@ export default function FuturePredictions() {
                 </div>
                 
                 <div className="mt-4 text-cyan-100/80 text-sm">
-                  <p>Impact potentiel estimé dans différents domaines basé sur l'alignement des compétences et les besoins sociétaux.</p>
+                  <p>Impact potentiel estimé dans différents domaines basé sur l&apos;alignement des compétences et les besoins sociétaux.</p>
                 </div>
               </div>
             </div>
@@ -799,7 +774,7 @@ export default function FuturePredictions() {
           >
             <h2 className="text-2xl font-bold text-purple-400 mb-6 flex items-center justify-center">
               <span className="mr-3">🌌</span> 
-              L'Univers des Données
+              L&apos;Univers des Données
             </h2>
             
             <div className="relative h-96 rounded-xl overflow-hidden bg-gradient-to-br from-[#0a0a18] to-[#1a1a2e]">
@@ -916,7 +891,7 @@ export default function FuturePredictions() {
               Ces projections sont générées par une analyse algorithmique des trajectoires de compétences actuelles,
               des tendances du secteur et des aspirations personnelles. Bien que le futur soit intrinsèquement incertain,
               cette approche basée sur les données fournit une feuille de route stratégique pour le développement
-              professionnel et la maximisation de l'impact.
+              professionnel et la maximisation de l&apos;impact.
             </p>
           </motion.div>
         </motion.div>

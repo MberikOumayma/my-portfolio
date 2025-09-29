@@ -59,8 +59,6 @@ interface ScreenshotModal {
 
 export default function ProjectsPage() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [activeNav, setActiveNav] = useState('projects')
   const [activeFilter, setActiveFilter] = useState('all')
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
   const [showSkillRadar, setShowSkillRadar] = useState(false)
@@ -148,7 +146,7 @@ export default function ProjectsPage() {
         screenshots.push({
           id: i,
           src: potentialPath,
-          alt: `Capture d'écran ${i} - ${projectId}`,
+          alt: `Capture d&apos;écran ${i} - ${projectId}`,
         });
         imageFound = true;
         break; // On utilise la première extension de la liste
@@ -159,7 +157,7 @@ export default function ProjectsPage() {
         screenshots.push({
           id: i,
           src: `/screenshots/${projectFolder}/screenshot-${i}.png`,
-          alt: `Capture d'écran ${i} - ${projectId}`,
+          alt: `Capture d&apos;écran ${i} - ${projectId}`,
         });
       }
     }
@@ -240,19 +238,19 @@ export default function ProjectsPage() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
+  const particlesLoaded = useCallback(async () => {
     // Optional: do something with the container
   }, [])
 
-const navItems = [
-  { name: 'Neural Entrance', id: 'home', path: '/' },
-  { name: 'Data Mind', id: 'about', path: '/DataMind' },
-  { name: 'Project Gallery', id: 'projects', path: '/Projects' },
-  { name: 'Professional Experience', id: 'stages', path: '/stages' },
-  { name: 'Neural Skills', id: 'skills', path: '/competences' },
-  { name: 'Future Predictions', id: 'predictions', path: '/predictions' }, // Changé de 'skills' à 'predictions'
-  { name: 'Contact', id: 'contact', path: '/contact' }
-]
+  const navItems = [
+    { name: 'Neural Entrance', id: 'home', path: '/' },
+    { name: 'Data Mind', id: 'about', path: '/DataMind' },
+    { name: 'Project Gallery', id: 'projects', path: '/Projects' },
+    { name: 'Professional Experience', id: 'stages', path: '/stages' },
+    { name: 'Neural Skills', id: 'skills', path: '/competences' },
+    { name: 'Future Predictions', id: 'predictions', path: '/predictions' },
+    { name: 'Contact', id: 'contact', path: '/contact' }
+  ]
 
   const filters = [
     { id: 'all', label: 'Tous' },
@@ -277,30 +275,29 @@ const navItems = [
 
   const projects: Project[] = [
     {
-id: 'projet1',
-title: 'NewsBot – Assistant IA de Personnalisation d\'Actualités',
-category: ['NLP', 'deep-learning', 'RAG', 'IA'],
-image: getProjectImage('projet1', 1),
-shortDescription: 'Développement d\'un assistant intelligent intégrant NLP et Deep Learning pour la collecte, la personnalisation et la synthèse d\'actualités en temps réel, avec détection de fake news, génération automatique de podcasts et prédiction des tendances futures.',
-details: 'NewsBot est une solution innovante conçue pour transformer la consommation d\'actualités grâce à l\'IA. Le système intègre un pipeline basé sur les Transformers pour la collecte et la synthèse automatique d\'articles, avec une couche de recommandation personnalisée permettant d\'adapter le contenu aux préférences des utilisateurs. Il inclut un module de détection des Fake News, fondé sur la comparaison multi-sources, ainsi qu\'une analyse des tendances à travers des nuages de mots, timelines dynamiques et prédiction des tendances futures grâce à des modèles de forecasting et de clustering thématique. Une fonctionnalité de Text-to-Speech permet en outre de générer des podcasts automatiques. Le backend est construit avec Flask/FastAPI, tandis que l\'interface utilisateur interactive repose sur React/Next.js, offrant une expérience moderne et fluide.',
-stack: ['NLP', 'Deep Learning', 'Transformers', 'Fake News Detection', 'Text-to-Speech', 'Forecasting', 'Trend Prediction', 'Flask', 'FastAPI', 'React', 'Next.js', 'Data Visualization', 'Recommandation personnalisée', 'Podcast IA'],
-demoUrl: '#',
-videoUrl: undefined,
-status: 'En cours',
-complexity: 'expert',
-metrics: { accuracy: '92%', precision: '89%', recall: '94%', f1: '91%' },
-process: [
-    { step: 'Collecte des données', description: 'Extraction et agrégation des articles depuis diverses sources' },
-    { step: 'Nettoyage et prétraitement', description: 'Tokenization, suppression des stop words, stemming' },
-    { step: 'Analyse et classification', description: 'Modèles Transformer pour catégorisation et résumé' },
-    { step: 'Détection de fake news', description: 'Analyse comparative multi-sources et vérification de faits' },
-    { step: 'Recommandation personnalisée', description: 'Système de profilage utilisateur et suggestions adaptatives' },
-    { step: 'Prédiction des tendances futures', description: 'Utilisation de modèles de forecasting et clustering thématique pour anticiper les sujets émergents' },
-    { step: 'Génération de podcasts', description: 'Synthèse vocale et création automatique de contenu audio' }
-],
-
-      challenges: 'La principale difficulté a été la gestion des différences structurelles entre les sources de données et l\'optimisation des modèles pour un temps de réponse rapide.',
-      future: 'Intégration de l\'analyse multimodale (texte + images), amélioration du système de recommandation avec reinforcement learning, et extension à d\'autres langues.',
+      id: 'projet1',
+      title: 'NewsBot – Assistant IA de Personnalisation d&apos;Actualités',
+      category: ['NLP', 'deep-learning', 'RAG', 'IA'],
+      image: getProjectImage('projet1', 1),
+      shortDescription: 'Développement d&apos;un assistant intelligent intégrant NLP et Deep Learning pour la collecte, la personnalisation et la synthèse d&apos;actualités en temps réel, avec détection de fake news, génération automatique de podcasts et prédiction des tendances futures.',
+      details: 'NewsBot est une solution innovante conçue pour transformer la consommation d&apos;actualités grâce à l&apos;IA. Le système intègre un pipeline basé sur les Transformers pour la collecte et la synthèse automatique d&apos;articles, avec une couche de recommandation personnalisée permettant d&apos;adapter le contenu aux préférences des utilisateurs. Il inclut un module de détection des Fake News, fondé sur la comparaison multi-sources, ainsi qu&apos;une analyse des tendances à travers des nuages de mots, timelines dynamiques et prédiction des tendances futures grâce à des modèles de forecasting et de clustering thématique. Une fonctionnalité de Text-to-Speech permet en outre de générer des podcasts automatiques. Le backend est construit avec Flask/FastAPI, tandis que l&apos;interface utilisateur interactive repose sur React/Next.js, offrant une expérience moderne et fluide.',
+      stack: ['NLP', 'Deep Learning', 'Transformers', 'Fake News Detection', 'Text-to-Speech', 'Forecasting', 'Trend Prediction', 'Flask', 'FastAPI', 'React', 'Next.js', 'Data Visualization', 'Recommandation personnalisée', 'Podcast IA'],
+      demoUrl: '#',
+      videoUrl: undefined,
+      status: 'En cours',
+      complexity: 'expert',
+      metrics: { accuracy: '92%', precision: '89%', recall: '94%', f1: '91%' },
+      process: [
+        { step: 'Collecte des données', description: 'Extraction et agrégation des articles depuis diverses sources' },
+        { step: 'Nettoyage et prétraitement', description: 'Tokenization, suppression des stop words, stemming' },
+        { step: 'Analyse et classification', description: 'Modèles Transformer pour catégorisation et résumé' },
+        { step: 'Détection de fake news', description: 'Analyse comparative multi-sources et vérification de faits' },
+        { step: 'Recommandation personnalisée', description: 'Système de profilage utilisateur et suggestions adaptatives' },
+        { step: 'Prédiction des tendances futures', description: 'Utilisation de modèles de forecasting et clustering thématique pour anticiper les sujets émergents' },
+        { step: 'Génération de podcasts', description: 'Synthèse vocale et création automatique de contenu audio' }
+      ],
+      challenges: 'La principale difficulté a été la gestion des différences structurelles entre les sources de données et l&apos;optimisation des modèles pour un temps de réponse rapide.',
+      future: 'Intégration de l&apos;analyse multimodale (texte + images), amélioration du système de recommandation avec reinforcement learning, et extension à d&apos;autres langues.',
       visualization: 'line',
       hasVideoDemo: false,
       screenshotCount: 4,
@@ -311,8 +308,8 @@ process: [
       title: 'NovaMedica',
       category: ['NLP', 'LLM', 'IA'],
       image: getProjectImage('projet2', 1),
-      shortDescription: 'Solution web et mobile basée sur l\'IA, permettant l\'extraction automatisée d\'informations médicales depuis des documents manuscrits et imprimés, avec des modules de recommandation de traitements personnalisés et de suggestion de médicaments similaires.',
-      details: 'NovaMedica est une application intelligente conçue pour améliorer l\'efficacité et la fiabilité du traitement des données médicales. Elle intègre un pipeline d\'OCR avancé combinant Transformers et CNNs pour extraire avec précision les noms de médicaments, dosages et formes depuis des ordonnances manuscrites ou imprimées. À partir des données patients, le système exploite des modèles prédictifs (RNN, LSTM) pour générer des recommandations de traitements personnalisés. De plus, un module de suggestion de substituts thérapeutiques analyse les propriétés pharmacologiques et interactions afin d\'assurer des alternatives cohérentes. Développée avec Flask et MongoDB, la solution est conforme aux normes de sécurité et confidentialité GDPR/HIPAA, garantissant la protection des données médicales sensibles.',
+      shortDescription: 'Solution web et mobile basée sur l&apos;IA, permettant l&apos;extraction automatisée d&apos;informations médicales depuis des documents manuscrits et imprimés, avec des modules de recommandation de traitements personnalisés et de suggestion de médicaments similaires.',
+      details: 'NovaMedica est une application intelligente conçue pour améliorer l&apos;efficacité et la fiabilité du traitement des données médicales. Elle intègre un pipeline d&apos;OCR avancé combinant Transformers et CNNs pour extraire avec précision les noms de médicaments, dosages et formes depuis des ordonnances manuscrites ou imprimées. À partir des données patients, le système exploite des modèles prédictifs (RNN, LSTM) pour générer des recommandations de traitements personnalisés. De plus, un module de suggestion de substituts thérapeutiques analyse les propriétés pharmacologiques et interactions afin d&apos;assurer des alternatives cohérentes. Développée avec Flask et MongoDB, la solution est conforme aux normes de sécurité et confidentialité GDPR/HIPAA, garantissant la protection des données médicales sensibles.',
       stack: ['OCR', 'Transformers', 'CNN', 'RNN', 'LSTM', 'LLM', 'NLP médical', 'Flask', 'MongoDB', 'Sécurité', 'GDPR', 'HIPAA'],
       demoUrl: '#',
       videoUrl: '/videos/novamedica-demo.mp4',
@@ -320,15 +317,15 @@ process: [
       complexity: 'expert',
       metrics: { accuracy: '96%', precision: '95%', recall: '97%', f1: '96%' },
       process: [
-        { step: 'Numérisation des documents', description: 'Acquisition et prétraitement des images d\'ordonnances' },
+        { step: 'Numérisation des documents', description: 'Acquisition et prétraitement des images d&apos;ordonnances' },
         { step: 'Extraction OCR avancée', description: 'Reconnaissance de texte avec modèles Transformer et CNN' },
         { step: 'Compréhension contextuelle', description: 'Analyse sémantique des relations entre médicaments et posologies' },
-        { step: 'Recommandation personnalisée', description: 'Suggestion de traitements basée sur l\'historique patient' },
+        { step: 'Recommandation personnalisée', description: 'Suggestion de traitements basée sur l&apos;historique patient' },
         { step: 'Vérification des interactions', description: 'Détection des contre-indications et interactions médicamenteuses' },
-        { step: 'Génération d\'alertes', description: 'Système de notifications pour les professionnels de santé' }
+        { step: 'Génération d&apos;alertes', description: 'Système de notifications pour les professionnels de santé' }
       ],
-      challenges: 'La reconnaissance d\'écriture manuscrite médicale présente des défis importants en raison des variations individuelles et des abréviations spécifiques au domaine.',
-      future: 'Intégration avec les dossiers médicaux électroniques, extension aux ordonnances vétérinaires, et développement d\'un module de traduction multilingue.',
+      challenges: 'La reconnaissance d&apos;écriture manuscrite médicale présente des défis importants en raison des variations individuelles et des abréviations spécifiques au domaine.',
+      future: 'Intégration avec les dossiers médicaux électroniques, extension aux ordonnances vétérinaires, et développement d&apos;un module de traduction multilingue.',
       visualization: 'bar',
       hasVideoDemo: true,
       screenshotCount: 5,
@@ -339,8 +336,8 @@ process: [
       title: 'Face Recognition with Real-Time Database',
       category: ['computer-vision', 'IA'],
       image: getProjectImage('projet3', 1),
-      shortDescription: 'Système de reconnaissance faciale en temps réel connecté à Supabase pour la gestion d\'accès intelligente, la présence automatisée et l\'intégration IoT sécurisée.',
-      details: 'Ce projet combine l\'intelligence artificielle et une infrastructure moderne pour développer un système de reconnaissance faciale intelligent et réactif. À l\'aide de Python, OpenCV et la librairie face_recognition (Dlib), le système identifie les visages via webcam en temps réel. Les données faciales et les logs d\'accès sont stockés dans Supabase, une plateforme offrant PostgreSQL, API REST et synchronisation temps réel. Grâce à l\'API Supabase et aux bibliothèques Requests / Supabase-py, les mises à jour s\'effectuent automatiquement, permettant une intégration fluide dans des cas d\'usage tels que le contrôle d\'accès, la gestion de présence ou encore des applications IoT sécurisées.',
+      shortDescription: 'Système de reconnaissance faciale en temps réel connecté à Supabase pour la gestion d&apos;accès intelligente, la présence automatisée et l&apos;intégration IoT sécurisée.',
+      details: 'Ce projet combine l&apos;intelligence artificielle et une infrastructure moderne pour développer un système de reconnaissance faciale intelligent et réactif. À l&apos;aide de Python, OpenCV et la librairie face_recognition (Dlib), le système identifie les visages via webcam en temps réel. Les données faciales et les logs d&apos;accès sont stockés dans Supabase, une plateforme offrant PostgreSQL, API REST et synchronisation temps réel. Grâce à l&apos;API Supabase et aux bibliothèques Requests / Supabase-py, les mises à jour s&apos;effectuent automatiquement, permettant une intégration fluide dans des cas d&apos;usage tels que le contrôle d&apos;accès, la gestion de présence ou encore des applications IoT sécurisées.',
       stack: ['Python', 'OpenCV', 'Dlib', 'face_recognition', 'Supabase', 'PostgreSQL', 'API REST'],
       demoUrl: '#',
       videoUrl: '/videos/face-recognition-demo.mp4',
@@ -348,14 +345,14 @@ process: [
       complexity: 'high',
       metrics: { accuracy: '98%', precision: '97%', recall: '96%', f1: '97%' },
       process: [
-        { step: 'Capture d\'image', description: 'Acquisition des visages via webcam en temps réel' },
-        { step: 'Prétraitement', description: 'Normalisation et amélioration de la qualité d\'image' },
+        { step: 'Capture d&apos;image', description: 'Acquisition des visages via webcam en temps réel' },
+        { step: 'Prétraitement', description: 'Normalisation et amélioration de la qualité d&apos;image' },
         { step: 'Extraction des caractéristiques', description: 'Identification des points clés du visage' },
         { step: 'Reconnaissance', description: 'Comparaison avec la base de données de référence' },
         { step: 'Stockage des données', description: 'Enregistrement dans Supabase avec horodatage' },
         { step: 'Interface de monitoring', description: 'Visualisation des accès et statistiques' }
       ],
-      challenges: 'La gestion des variations d\'éclairage et des angles de prise de vue a nécessité un prétraitement avancé des images.',
+      challenges: 'La gestion des variations d&apos;éclairage et des angles de prise de vue a nécessité un prétraitement avancé des images.',
       future: 'Intégration de la détection de masques faciaux, reconnaissance des émotions, et déploiement sur edge devices.',
       visualization: 'face',
       hasVideoDemo: true,
@@ -367,8 +364,8 @@ process: [
       title: 'MLOps Pipeline for Telecom Churn Prediction',
       category: ['mlops', 'prediction', 'MachineLearning'],
       image: getProjectImage('projet4', 1),
-      shortDescription: 'Mise en place d\'un pipeline MLOps complet pour automatiser le cycle de vie du projet Télécom Churn Prediction, intégrant CI/CD, Docker, Jenkins et Kubernetes.',
-      details: 'Ce projet vise à industrialiser le modèle de churn prediction grâce à un pipeline MLOps robuste. L\'architecture mise en place couvre l\'ensemble du cycle de vie : préparation des données, entraînement du modèle, tests, déploiement et monitoring. Les étapes de CI/CD ont été automatisées via Jenkins и Makefile, tandis que l\'environnement d\'exécution a été conteneurisé avec Docker pour garantir la portabilité. Le déploiement a ensuite été orchestré sur Kubernetes, assurant scalabilité et haute disponibilité. Ce pipeline MLOps permet de réduire les délais de mise en production, de fiabiliser le déploiement des modèles et d\'assurer une meilleure traçabilité des versions, rending le système prédictif plus robuste et exploitable dans un contexte réel.',
+      shortDescription: 'Mise en place d&apos;un pipeline MLOps complet pour automatiser le cycle de vie du projet Télécom Churn Prediction, intégrant CI/CD, Docker, Jenkins et Kubernetes.',
+      details: 'Ce projet vise à industrialiser le modèle de churn prediction grâce à un pipeline MLOps robuste. L&apos;architecture mise en place couvre l&apos;ensemble du cycle de vie : préparation des données, entraînement du modèle, tests, déploiement et monitoring. Les étapes de CI/CD ont été automatisées via Jenkins и Makefile, tandis que l&apos;environnement d&apos;exécution a été conteneurisé avec Docker pour garantir la portabilité. Le déploiement a ensuite été orchestré sur Kubernetes, assurant scalabilité et haute disponibilité. Ce pipeline MLOps permet de réduire les délais de mise en production, de fiabiliser le déploiement des modèles et d&apos;assurer une meilleure traçabilité des versions, rending le système prédictif plus robuste et exploitable dans un contexte réel.',
       stack: ['MLOps', 'CI/CD', 'Jenkins', 'Docker', 'Kubernetes', 'Makefile', 'Machine Learning Lifecycle', 'Model Deployment', 'Model Monitoring', 'Churn Prediction', 'Automation', 'Scalability'],
       demoUrl: '#',
       videoUrl: undefined,
@@ -383,8 +380,8 @@ process: [
         { step: 'Déploiement automatisé', description: 'Mise en production via pipeline CI/CD' },
         { step: 'Monitoring continu', description: 'Surveillance des performances en temps réel' }
       ],
-      challenges: 'La principale difficulté a été la création d\'un pipeline robuste capable de gérer les différentes versions de modèles et de garantir la reproductibilité des expériences.',
-      future: 'Intégration de l\'explicabilité des modèles (XAI), automatisation de la détection de drift, et extension à d\'autres cas d\'usage.',
+      challenges: 'La principale difficulté a été la création d&apos;un pipeline robuste capable de gérer les différentes versions de modèles et de garantir la reproductibilité des expériences.',
+      future: 'Intégration de l&apos;explicabilité des modèles (XAI), automatisation de la détection de drift, et extension à d&apos;autres cas d&apos;usage.',
       visualization: 'pipeline',
       hasVideoDemo: false,
       screenshotCount: 4,
@@ -395,8 +392,8 @@ process: [
       title: 'Airline Business Intelligence Dashboard',
       category: ['dataviz', 'BusinessIntelligence', 'PowerBI'],
       image: getProjectImage('projet5', 1),
-      shortDescription: 'Développement d\'un dashboard Power BI de 6 pages pour une compagnie aérienne, offrant des analyses approfondies sur la fidélité client, l\'activité des vols et les tendances temporelles.',
-      details: 'Ce projet Power BI marque une étape importante dans mon parcours en data analytics, avec la création d\'un dashboard interactif et robuste destiné à un client du secteur aérien. Construit en collaboration avec une équipe dédiée, le tableau de bord a été structuré en six sections clés : Home (Vue exécutive avec KPI stratégiques), Customer Analysis (Analyse des données démographiques et comportementales), Customer Loyalty (Mesure de la fidélité et des annulations), Loyalty Segmentation (Segmentation selon l\'engagement et la valeur), Flight Activity Analysis (Étude de la fréquence et de la distance des vols) et Temporal Analysis (Exploration des tendances saisonnières et temporelles). Ce tableau de bord aide la compagnie à identifier des leviers de croissance, optimiser ses opérations et cibler ses stratégies de fidélisation grâce à une visualisation claire et exploitable des données.',
+      shortDescription: 'Développement d&apos;un dashboard Power BI de 6 pages pour une compagnie aérienne, offrant des analyses approfondies sur la fidélité client, l&apos;activité des vols et les tendances temporelles.',
+      details: 'Ce projet Power BI marque une étape importante dans mon parcours en data analytics, avec la création d&apos;un dashboard interactif et robuste destiné à un client du secteur aérien. Construit en collaboration avec une équipe dédiée, le tableau de bord a été structuré en six sections clés : Home (Vue exécutive avec KPI stratégiques), Customer Analysis (Analyse des données démographiques et comportementales), Customer Loyalty (Mesure de la fidélité et des annulations), Loyalty Segmentation (Segmentation selon l&apos;engagement et la valeur), Flight Activity Analysis (Étude de la fréquence et de la distance des vols) et Temporal Analysis (Exploration des tendances saisonnières et temporelles). Ce tableau de bord aide la compagnie à identifier des leviers de croissance, optimiser ses opérations et cibler ses stratégies de fidélisation grâce à une visualisation claire et exploitable des données.',
       stack: ['Power BI', 'Business Intelligence', 'Data Visualization', 'Customer Loyalty', 'Flight Activity', 'Temporal Analysis', 'KPI', 'Data Analytics', 'Dashboard Design', 'Customer Segmentation'],
       demoUrl: '#',
       videoUrl: undefined,
@@ -405,13 +402,13 @@ process: [
       metrics: { satisfaction: '95%', performance: '98%', adoption: '90%', impact: '87%' },
       process: [
         { step: 'Analyse des besoins', description: 'Identification des KPIs et métriques clés' },
-        { step: 'Conception de l\'architecture', description: 'Design du dashboard et des interactions' },
+        { step: 'Conception de l&apos;architecture', description: 'Design du dashboard et des interactions' },
         { step: 'ETL et modélisation', description: 'Transformation et préparation des données' },
         { step: 'Développement des visualisations', description: 'Création des graphiques et indicateurs' },
         { step: 'Validation et tests utilisateurs', description: 'Ajustements basés sur les retours' },
         { step: 'Déploiement et formation', description: 'Mise en production et formation des utilisateurs' }
       ],
-      challenges: 'L\'intégration de sources de données hétérogènes et la conception d\'une interface à la fois complète et intuitive ont représenté les défis majeurs.',
+      challenges: 'L&apos;intégration de sources de données hétérogènes et la conception d&apos;une interface à la fois complète et intuitive ont représenté les défis majeurs.',
       future: 'Intégration de prédictions en temps réel, alertes automatisées, et extension mobile.',
       visualization: 'dashboard',
       hasVideoDemo: false,
@@ -423,8 +420,8 @@ process: [
       title: 'ChoubikLoubik',
       category: ['Symfony', 'JavaFX', 'fullstack', 'web', 'desktop'],
       image: getProjectImage('projet6', 1),
-      shortDescription: 'Application web et desktop de restauration intelligente permettant la gestion centralisée des commandes, réservations et livraisons, avec intégration d\'un assistant vocal et d\'un paiement en ligne sécurisé.',
-      details: 'ChoubikLoubik est une solution innovante développée pour moderniser l\'expérience de gestion dans le secteur de la restauration. L\'application combine une interface desktop en JavaFX et un backend web en Symfony pour offrir aux restaurateurs une gestion fluide des plats, commandes et réservations en temps réel. Elle intègre un assistant vocal interactif pour simplifier la prise de commande ainsi qu\'un système de paiement sécurisé via l\'API Stripe. De plus, un module de suivi dynamique des livraisons, basé sur une carte interactive, optimise les trajets et améliore la satisfaction client. Ce projet a été distingué lors du Bal des Projets 2024, obtenant la 2ᵉ place parmi les meilleures innovations étudiantes.',
+      shortDescription: 'Application web et desktop de restauration intelligente permettant la gestion centralisée des commandes, réservations et livraisons, avec intégration d&apos;un assistant vocal et d&apos;un paiement en ligne sécurisé.',
+      details: 'ChoubikLoubik est une solution innovante développée pour moderniser l&apos;expérience de gestion dans le secteur de la restauration. L&apos;application combine une interface desktop en JavaFX et un backend web en Symfony pour offrir aux restaurateurs une gestion fluide des plats, commandes et réservations en temps réel. Elle intègre un assistant vocal interactif pour simplifier la prise de commande ainsi qu&apos;un système de paiement sécurisé via l&apos;API Stripe. De plus, un module de suivi dynamique des livraisons, basé sur une carte interactive, optimise les trajets et améliore la satisfaction client. Ce projet a été distingué lors du Bal des Projets 2024, obtenant la 2ᵉ place parmi les meilleures innovations étudiantes.',
       stack: ['JavaFX', 'Symfony', 'Assistant vocal', 'Stripe API', 'UML Modeling', 'Scrum'],
       demoUrl: '#',
       videoUrl: '/videos/choubikloubik-demo.mp4',
@@ -433,14 +430,14 @@ process: [
       metrics: { efficiency: '40%', satisfaction: '92%', errors: '-60%', speed: '35%' },
       process: [
         { step: 'Analyse des besoins', description: 'Identification des processus métier à optimiser' },
-        { step: 'Conception UX/UI', description: 'Design d\'interfaces utilisateur intuitives' },
-        { step: 'Développement frontend', description: 'Création de l\'application desktop avec JavaFX' },
-        { step: 'Développement backend', description: 'Implémentation de l\'API avec Symfony' },
+        { step: 'Conception UX/UI', description: 'Design d&apos;interfaces utilisateur intuitives' },
+        { step: 'Développement frontend', description: 'Création de l&apos;application desktop avec JavaFX' },
+        { step: 'Développement backend', description: 'Implémentation de l&apos;API avec Symfony' },
         { step: 'Intégration des services', description: 'Connexion avec Stripe et services vocaux' },
         { step: 'Tests et déploiement', description: 'Validation et mise en production' }
       ],
-      challenges: 'La synchronisation en temps réel entre l\'application desktop et le backend web a nécessité une architecture soigneusement conçue.',
-      future: 'Application mobile dédiée, intégration de l\'IA pour la prédiction de commandes, et expansion à d\'autres secteurs.',
+      challenges: 'La synchronisation en temps réel entre l&apos;application desktop et le backend web a nécessité une architecture soigneusement conçue.',
+      future: 'Application mobile dédiée, intégration de l&apos;IA pour la prédiction de commandes, et expansion à d&apos;autres secteurs.',
       visualization: 'restaurant',
       hasVideoDemo: true,
       screenshotCount: 5,
@@ -454,8 +451,8 @@ process: [
       title: 'Emotion Audio Recognition Lab',
       category: ['audio', 'prediction', 'DeepLearning'],
       image: getProjectImage('lab1', 1),
-      shortDescription: 'Projet de reconnaissance des émotions à partir d\'audio, combinant Deep Learning, spectrogrammes, augmentation de données audio et génération de données synthétiques par diffusion.',
-      details: 'Emotion Audio Recognition Lab est un projet avancé de Speech Emotion Recognition (SER), utilisant un pipeline complet basé sur Python, TensorFlow, Librosa et Scikit-learn. Les données audio sont enrichies par des techniques d\'augmentation (injection de bruit, changement de hauteur, time stretching) avant d\'être converties en représentations visuelles telles que les Mel-spectrogrammes et les MFCCs. Les modèles entraînés incluent des CNNs, ResNet50 et des architectures hybrides, permettant une meilleure capture des patterns émotionnels. Pour pallier le manque de données, des modèles de diffusion génèrent des exemples synthétiques réalistes. Enfin, la performance est mesurée par des métriques rigoureuses (Précision, Rappel, F1-score, Matrice de confusion), assurant une évaluation robuste du système.',
+      shortDescription: 'Projet de reconnaissance des émotions à partir d&apos;audio, combinant Deep Learning, spectrogrammes, augmentation de données audio et génération de données synthétiques par diffusion.',
+      details: 'Emotion Audio Recognition Lab est un projet avancé de Speech Emotion Recognition (SER), utilisant un pipeline complet basé sur Python, TensorFlow, Librosa et Scikit-learn. Les données audio sont enrichies par des techniques d&apos;augmentation (injection de bruit, changement de hauteur, time stretching) avant d&apos;être converties en représentations visuelles telles que les Mel-spectrogrammes et les MFCCs. Les modèles entraînés incluent des CNNs, ResNet50 et des architectures hybrides, permettant une meilleure capture des patterns émotionnels. Pour pallier le manque de données, des modèles de diffusion génèrent des exemples synthétiques réalistes. Enfin, la performance est mesurée par des métriques rigoureuses (Précision, Rappel, F1-score, Matrice de confusion), assurant une évaluation robuste du système.',
       stack: ['TensorFlow', 'Librosa', 'Scikit-learn', 'Audio Augmentation', 'Mel-spectrogram', 'MFCC', 'CNN', 'ResNet50', 'Hybrid Models', 'Diffusion Models', 'Speech Emotion Recognition', 'Deep Learning', 'Classification audio'],
       demoUrl: '#',
       videoUrl: undefined,
@@ -463,15 +460,15 @@ process: [
       complexity: 'high',
       metrics: { accuracy: '87%', precision: '85%', recall: '88%', f1: '86%' },
       process: [
-        { step: 'Collecte des données audio', description: 'Acquisition d\'échantillons vocaux avec différentes émotions' },
+        { step: 'Collecte des données audio', description: 'Acquisition d&apos;échantillons vocaux avec différentes émotions' },
         { step: 'Prétraitement audio', description: 'Nettoyage du signal, normalisation, suppression du bruit' },
         { step: 'Extraction de features', description: 'Calcul des MFCC, spectrogrammes, et autres caractéristiques acoustiques' },
         { step: 'Augmentation des données', description: 'Techniques de synthèse et transformation pour enrichir le dataset' },
         { step: 'Entraînement des modèles', description: 'Expérimentation avec CNN, RNN et architectures hybrides' },
         { step: 'Évaluation et optimisation', description: 'Validation croisée et réglage des hyperparamètres' }
       ],
-      challenges: 'La variabilité inter-individuelle dans l\'expression des émotions et le bruit environnemental ont constitué les principaux défis à surmonter.',
-      future: 'Extension à d\'autres langues, intégration en temps réel, et combinaison avec l\'analyse faciale pour une reconnaissance multimodale.',
+      challenges: 'La variabilité inter-individuelle dans l&apos;expression des émotions et le bruit environnemental ont constitué les principaux défis à surmonter.',
+      future: 'Extension à d&apos;autres langues, intégration en temps réel, et combinaison avec l&apos;analyse faciale pour une reconnaissance multimodale.',
       visualization: 'wave',
       hasVideoDemo: false,
       screenshotCount: 7,
@@ -483,7 +480,7 @@ process: [
       category: ['prediction', 'MachineLearning', 'classification'],
       image: getProjectImage('lab2', 1),
       shortDescription: 'Projet de prédiction du churn client dans le secteur des télécommunications, utilisant le Machine Learning et déployé via Flask pour fournir des prédictions en temps réel.',
-      details: 'Le projet Télécom Churn Prediction a pour objectif d\'anticiper la probabilité qu\'un client se désabonne d\'un service télécom. À partir de données historiques sur le comportement des clients, le système applique des techniques de Machine Learning (Scikit-learn) afin d\'identifiers les profils les plus à risque. L\'application a été déployée avec Flask, offrant une interface web interactive (HTML/CSS/JS) qui permet aux entreprises d\'obtenir des prédictions en temps réel. En complément, des analyses exploratoires et des visualisations (Matplotlib, Seaborn) permettent d\'interpréter les résultats et d\'orienter les actions de rétention. Ce projet fournit un outil stratégique pour améliorer la fidélisation client et réduire le taux de churn.',
+      details: 'Le projet Télécom Churn Prediction a pour objectif d&apos;anticiper la probabilité qu&apos;un client se désabonne d&apos;un service télécom. À partir de données historiques sur le comportement des clients, le système applique des techniques de Machine Learning (Scikit-learn) afin d&apos;identifiers les profils les plus à risque. L&apos;application a été déployée avec Flask, offrant une interface web interactive (HTML/CSS/JS) qui permet aux entreprises d&apos;obtenir des prédictions en temps réel. En complément, des analyses exploratoires et des visualisations (Matplotlib, Seaborn) permettent d&apos;interpréter les résultats et d&apos;orienter les actions de rétention. Ce projet fournit un outil stratégique pour améliorer la fidélisation client et réduire le taux de churn.',
       stack: ['Python', 'Flask', 'Scikit-learn', 'Pandas', 'NumPy', 'Machine Learning', 'Classification', 'Data Visualization', 'Matplotlib', 'Seaborn', 'HTML/CSS/JS', 'Churn Prediction', 'Télécommunications', 'Customer Retention'],
       demoUrl: '#',
       videoUrl: '/videos/churn-demo.mp4',
@@ -495,26 +492,16 @@ process: [
         { step: 'Feature engineering', description: 'Création de variables prédictives pertinentes' },
         { step: 'Entraînement des modèles', description: 'Expérimentation avec différents algorithmes' },
         { step: 'Optimisation', description: 'Réglage des hyperparamètres et sélection du meilleur modèle' },
-        { step: 'Développement de l\'application', description: 'Création de l\'interface web avec Flask' },
+        { step: 'Développement de l&apos;application', description: 'Création de l&apos;interface web avec Flask' },
         { step: 'Déploiement', description: 'Mise en production et tests utilisateurs' }
       ],
-      challenges: 'Le déséquilibre des classes (peu de clients qui partent) a nécessité des techniques spécifiques de sampling et d\'évaluation.',
-      future: 'Intégration de données temps réel, alertes automatisées, et extension à d\'autres secteurs.',
+      challenges: 'Le déséquilibre des classes (peu de clients qui partent) a nécessité des techniques spécifiques de sampling et d&apos;évaluation.',
+      future: 'Intégration de données temps réel, alertes automatisées, et extension à d&apos;autres secteurs.',
       visualization: 'churn',
       hasVideoDemo: true,
       screenshotCount: 4,
       screenshotTypes: ['png', 'jpg']
     }
-  ]
-
-  const skillData = [
-    { skill: 'NLP', level: 90 },
-    { skill: 'Computer Vision', level: 85 },
-    { skill: 'Deep Learning', level: 95 },
-    { skill: 'Data Visualization', level: 80 },
-    { skill: 'MLOps', level: 75 },
-    { skill: 'Audio Processing', level: 70 },
-    { skill: 'Reinforcement Learning', level: 65 }
   ]
 
   // Composant pour afficher les captures d'écran dans la carte
@@ -629,16 +616,16 @@ process: [
     );
   };
 
-  // Composant Modal pour les captures d'écran - AVEC CURSEUR BASIQUE
+  // Composant Modal pour les captures d'écran - CORRIGÉ POUR LES HOOKS
   const ScreenshotModal = () => {
+    // Les hooks doivent être appelés au début du composant
+    const modalRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+
     if (!screenshotModal.isOpen) return null;
 
     const currentScreenshot = screenshotModal.screenshots[screenshotModal.currentIndex];
     const projectTitle = [...projects, ...labs].find(p => p.id === screenshotModal.projectId)?.title || 'Projet';
-
-    // Référence pour la modal
-    const modalRef = useRef<HTMLDivElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
 
     // Gestionnaire de clic amélioré
     const handleBackdropClick = (e: React.MouseEvent) => {
@@ -651,19 +638,19 @@ process: [
     return (
       <div 
         ref={modalRef}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg cursor-auto" // cursor-auto pour le curseur basique
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-lg cursor-auto"
         onClick={handleBackdropClick}
       >
         <div 
           ref={contentRef}
-          className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden cursor-auto" // cursor-auto pour le curseur basique
-          onClick={(e) => e.stopPropagation()} // Empêcher la propagation du clic
+          className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden cursor-auto"
+          onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xl font-bold text-cyan-300">{projectTitle}</h3>
             <button
               onClick={closeScreenshotModal}
-              className="text-gray-400 hover:text-white text-2xl font-bold transition-colors duration-200 p-1 rounded-full hover:bg-gray-700 w-8 h-8 flex items-center justify-center cursor-pointer" // cursor-pointer pour le bouton
+              className="text-gray-400 hover:text-white text-2xl font-bold transition-colors duration-200 p-1 rounded-full hover:bg-gray-700 w-8 h-8 flex items-center justify-center cursor-pointer"
             >
               ×
             </button>
@@ -690,13 +677,13 @@ process: [
               <>
                 <button
                   onClick={prevScreenshot}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all z-10 cursor-pointer" // cursor-pointer pour les boutons de navigation
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all z-10 cursor-pointer"
                 >
                   ‹
                 </button>
                 <button
                   onClick={nextScreenshot}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all z-10 cursor-pointer" // cursor-pointer pour les boutons de navigation
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-all z-10 cursor-pointer"
                 >
                   ›
                 </button>
@@ -1013,11 +1000,8 @@ process: [
             <div className="flex space-x-10">
               {navItems.map((item, index) => (
                 <motion.div key={item.id} className="relative" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + index * 0.1 }}>
-                  <Link href={item.path} className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${activeNav === item.id ? 'text-cyan-400' : ''}`}>
+                  <Link href={item.path} className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1`}>
                     {item.name}
-                    {activeNav === item.id && (
-                      <motion.div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full" layoutId="navIndicator" />
-                    )}
                   </Link>
                 </motion.div>
               ))}
@@ -1026,8 +1010,8 @@ process: [
         </div>
       </motion.nav>
 
-      {/* Modal des captures d'écran - AVEC CURSEUR BASIQUE */}
-      {screenshotModal.isOpen && <ScreenshotModal />}
+      {/* Modal des captures d'écran */}
+      <ScreenshotModal />
 
       {/* Contenu principal */}
       <div className="relative z-20 container mx-auto px-4 py-16 pt-28">
@@ -1036,7 +1020,7 @@ process: [
             Projects Gallery
           </h1>
           <p className="text-cyan-300 font-mono text-xl max-w-3xl mx-auto">
-            Exploration d'idées innovantes en Data Science et Intelligence Artificielle
+            Exploration d&apos;idées innovantes en Data Science et Intelligence Artificielle
           </p>
         </motion.div>
 

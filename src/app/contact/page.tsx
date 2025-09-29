@@ -6,12 +6,9 @@ import Link from 'next/link'
 import Particles from 'react-particles'
 import { loadSlim } from 'tsparticles-slim'
 import type { Engine } from 'tsparticles-engine'
-import type { Container } from 'tsparticles-engine'
 
 export default function ContactPage() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [activeNav, setActiveNav] = useState('contact')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,20 +33,20 @@ export default function ContactPage() {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container?: Container) => {
+  const particlesLoaded = useCallback(async () => {
     // Optional: do something with the container
   }, [])
 
   // Nouveaux liens de navigation avec les redirections demandées
-const navItems = [
-  { name: 'Neural Entrance', id: 'home', path: '/' },
-  { name: 'Data Mind', id: 'about', path: '/DataMind' },
-  { name: 'Project Gallery', id: 'projects', path: '/Projects' },
-  { name: 'Professional Experience', id: 'stages', path: '/stages' },
-  { name: 'Neural Skills', id: 'skills', path: '/competences' },
-  { name: 'Future Predictions', id: 'predictions', path: '/predictions' }, // Changé de 'skills' à 'predictions'
-  { name: 'Contact', id: 'contact', path: '/contact' }
-]
+  const navItems = [
+    { name: 'Neural Entrance', id: 'home', path: '/' },
+    { name: 'Data Mind', id: 'about', path: '/DataMind' },
+    { name: 'Project Gallery', id: 'projects', path: '/Projects' },
+    { name: 'Professional Experience', id: 'stages', path: '/stages' },
+    { name: 'Neural Skills', id: 'skills', path: '/competences' },
+    { name: 'Future Predictions', id: 'predictions', path: '/predictions' },
+    { name: 'Contact', id: 'contact', path: '/contact' }
+  ]
 
   // Gestion des changements dans le formulaire
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -310,33 +307,12 @@ const navItems = [
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                 >
-                  <motion.div
-                    onHoverStart={() => setIsHovering(true)}
-                    onHoverEnd={() => setIsHovering(false)}
+                  <Link
+                    href={item.path}
+                    className="text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1"
                   >
-                    <Link
-                      href={item.path}
-                      className={`text-cyan-300/90 hover:text-cyan-400 transition-colors font-medium text-sm relative py-2 px-1 ${
-                        activeNav === item.id ? 'text-cyan-400' : ''
-                      }`}
-                      onClick={() => setActiveNav(item.id)}
-                    >
-                      {item.name}
-                      {activeNav === item.id && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                          layoutId="navIndicator"
-                        />
-                      )}
-                      {/* Souligner "Contact" */}
-                      {item.name === 'Contact' && (
-                        <motion.div 
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"
-                          layoutId="contactIndicator"
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
+                    {item.name}
+                  </Link>
                 </motion.div>
               ))}
             </div>
